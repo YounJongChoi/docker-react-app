@@ -7,20 +7,18 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - /usr/src/app/node_modules
-      - ./:/usr/src/app
-    environment:
-      - CHOKIDAR_USEPOLLING=true
+      - /usr/scr/app/node_modules
+      - ./:/usr/scr/app
+    # environment:
+      # - CHOKIDAR_USEPOLLING=true
+      # - WATCHPACK_POLLING=true
     stdin_open: true
+
   tests:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    ports:
-      - "3000:3000"
     volumes:
-      - /usr/src/app/node_modules
-      - ./:/usr/src/app
-    environment:
-      - CHOKIDAR_USEPOLLING=true
+      - /usr/scr/app/node_modules
+      - ./:/usr/scr/app
     command: ["npm","run","test"]
